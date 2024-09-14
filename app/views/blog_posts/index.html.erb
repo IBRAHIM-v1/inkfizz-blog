@@ -1,8 +1,14 @@
-<h1>My First Blog</h1>
+<h1>InkFizz blog</h1>
+<p>InkFizz blog is still under development.</p>
 
 <% @blog_posts.each do |blog_post| %>
     <div>
       <h2><%= link_to blog_post.title, blog_post %></h2>
+      <% if blog_post.draft? %>
+      <div class="p-2 bg-gray-100 text-gray-900 ">Draft</div>
+      <% elsif blog_post.scheduled? %>
+      <div class="p-2 bg-blue-100 text-blue-900 ">scheduled</div>
+      <% end %>
       <%= blog_post.body %>
     </div>
-<% end %>
+<% end %> 
